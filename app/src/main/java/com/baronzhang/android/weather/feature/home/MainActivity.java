@@ -9,6 +9,8 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.widget.Toolbar;
+
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -133,6 +135,7 @@ public class MainActivity extends BaseActivity
         return true;
     }
 
+    //菜单点击事件
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
@@ -162,6 +165,8 @@ public class MainActivity extends BaseActivity
     public void addOrUpdateCityListInDrawerMenu(Weather weather) {
         drawerMenuPresenter.loadSavedCities();
     }
+
+
 
     @Override
     public void onSelect(String cityId) {

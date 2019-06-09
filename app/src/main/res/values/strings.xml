@@ -22,9 +22,12 @@
 
     <string name="title_detail_module">详情</string>
     <string name="title_forecast_module">预报</string>
+
+
     <string name="title_aqi_module">污染指数</string>
     <string name="title_index_module">生活指数</string>
     <string name="separator">/</string>
+    <string name="title_activity_constellation">ConstellationActivity</string>
 
 
 </resources>

@@ -3,6 +3,8 @@ package com.baronzhang.android.weather.data.db.entities.minimalist;
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
 
+import java.io.Serializable;
+
 /**
  * 天气预报
  *
@@ -10,7 +12,7 @@ import com.j256.ormlite.table.DatabaseTable;
  *         16/2/25
  */
 @DatabaseTable(tableName = "WeatherForecast")
-public class WeatherForecast {
+public class WeatherForecast implements Serializable {
 
     public static final String ID_FIELD_NAME = "_id";
     public static final String CITY_ID_FIELD_NAME = "cityId";

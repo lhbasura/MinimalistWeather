@@ -2,12 +2,14 @@ package com.baronzhang.android.weather.feature.home;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,6 +23,8 @@ import com.baronzhang.android.weather.data.db.entities.minimalist.WeatherForecas
 import com.baronzhang.android.weather.data.db.entities.minimalist.LifeIndex;
 import com.baronzhang.android.weather.data.db.entities.minimalist.Weather;
 import com.baronzhang.android.weather.data.WeatherDetail;
+import com.baronzhang.android.weather.feature.constellation.ConstellationActivity;
+import com.baronzhang.android.weather.feature.selectcity.SelectCityActivity;
 import com.baronzhang.android.widget.IndicatorView;
 
 import java.util.ArrayList;
@@ -29,6 +33,8 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
+
+import static androidx.constraintlayout.widget.Constraints.TAG;
 
 public class HomePageFragment extends BaseFragment implements HomePageContract.View {
 
@@ -114,6 +120,14 @@ public class HomePageFragment extends BaseFragment implements HomePageContract.V
         weatherForecasts = new ArrayList<>();
         forecastAdapter = new ForecastAdapter(weatherForecasts);
         forecastAdapter.setOnItemClickListener((adapterView, view, i, l) -> {
+
+            List<WeatherForecast>weatherForecasts=forecastAdapter.getWeatherForecasts();
+            WeatherForecast weatherForecast=weatherForecasts.get(i);//从forecastAdapter的weatherforcatsts列表中获取当前项
+
+            Intent intent=new Intent(getActivity(), ConstellationActivity.class);
+            intent.putExtra("weatherDetail",weatherForecast);
+            Log.d(TAG, "onCreateView: "+weatherForecast);
+            startActivity(intent);
         });
         forecastRecyclerView.setItemAnimator(new DefaultItemAnimator());
         forecastRecyclerView.setAdapter(forecastAdapter);
